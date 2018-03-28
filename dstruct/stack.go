@@ -1,3 +1,0 @@
-package dstruct
-
-// LIFO
