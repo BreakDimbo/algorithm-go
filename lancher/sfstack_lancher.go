@@ -1,4 +1,4 @@
-package main
+package lancher
 
 import (
 	"bufio"
@@ -11,7 +11,7 @@ import (
 )
 
 // SimpleFixedStack example
-func lanchSFStack() {
+func LanchSFStack() {
 	sfstack := stack.NewSFStack(100)
 	reader := bufio.NewReader(os.Stdin)
 
