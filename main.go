@@ -3,5 +3,5 @@ package main
 import "github.com/breakD/algorithms/lancher"
 
 func main() {
-	lancher.LanchSFStack()
+	lancher.LanchLLStack()
 }
