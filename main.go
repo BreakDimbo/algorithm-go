@@ -1,7 +1,9 @@
 package main
 
-import "github.com/breakD/algorithms/lancher"
+import (
+	"github.com/breakD/algorithms/sort"
+)
 
 func main() {
-	lancher.LanchQueue()
+	sort.LaunchShell()
 }
