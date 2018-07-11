@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	sort.LaunchMerge()
+	sort.LaunchQuick()
 }

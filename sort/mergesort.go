@@ -53,7 +53,6 @@ func (e *Merge) BUSort(c []Comparable) {
 		for lo := 0; lo < length-sz; lo = lo + sz + sz {
 			e.merge(c, lo, lo+sz-1, min(lo+sz+sz-1, length-1))
 		}
-
 	}
 }
 
