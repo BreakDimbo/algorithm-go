@@ -21,7 +21,7 @@ func (l *LinkedListLRU) Get(item item.Item) item.Item {
 	if l.head == nil {
 		l.head = NewNode()
 		l.head.Item = item
-		l.size += 1
+		l.size += 1Palindrome
 		return item
 	}
 
