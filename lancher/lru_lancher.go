@@ -1,0 +1,5 @@
+package lancher
+
+func LanchLRU() {
+
+}
