@@ -1,23 +1,24 @@
-package linkedList
+package linkedlist
 
 import (
 	"fmt"
 )
 
 type Node struct {
-	data int
+	data interface{}
 	next *Node
 }
 
 type SingleLinkedList struct {
-	head *Node
+	head   *Node
+	length int
 }
 
 func NewSingleLinkedList() *SingleLinkedList {
 	return &SingleLinkedList{}
 }
 
-func (s *SingleLinkedList) FindByValue(value int) *Node {
+func (s *SingleLinkedList) FindByValue(value interface{}) *Node {
 	p := s.head
 	for p != nil && p.data != value {
 		p = p.next
@@ -35,7 +36,26 @@ func (s *SingleLinkedList) FindByIndex(index int) *Node {
 	return p
 }
 
-func (s *SingleLinkedList) InsertValueToHead(value int) *Node {
+func (s *SingleLinkedList) InsertValueToTail(value interface{}) *Node {
+	node := &Node{data: value}
+	s.InsertNodeToTail(node)
+	return node
+}
+
+func (s *SingleLinkedList) InsertNodeToTail(node *Node) {
+	if err := checkNode(node); err != nil {
+		return
+	}
+
+	p := s.head
+	for p.next != nil {
+		p = p.next
+	}
+	p.next = node
+	s.length++
+}
+
+func (s *SingleLinkedList) InsertValueToHead(value interface{}) *Node {
 	node := &Node{data: value}
 	s.InsertNodeToHead(node)
 	return node
@@ -48,6 +68,12 @@ func (s *SingleLinkedList) InsertNodeToHead(node *Node) {
 
 	node.next = s.head
 	s.head = node
+	s.length++
+}
+func (s *SingleLinkedList) InsertValueAfter(targetNode *Node, value interface{}) *Node {
+	newNode := &Node{data: value}
+	s.InsertNodeAfter(targetNode, newNode)
+	return newNode
 }
 
 func (s *SingleLinkedList) InsertNodeAfter(targetNode *Node, newNode *Node) {
@@ -57,11 +83,12 @@ func (s *SingleLinkedList) InsertNodeAfter(targetNode *Node, newNode *Node) {
 
 	newNode.next = targetNode.next
 	targetNode.next = newNode
+	s.length++
 }
 
-func (s *SingleLinkedList) InsertValueAfter(targetNode *Node, value int) *Node {
+func (s *SingleLinkedList) InsertValueBefore(targetNode *Node, value interface{}) *Node {
 	newNode := &Node{data: value}
-	s.InsertNodeAfter(targetNode, newNode)
+	s.InsertNodeBefore(targetNode, newNode)
 	return newNode
 }
 
@@ -88,12 +115,7 @@ func (s *SingleLinkedList) InsertNodeBefore(targetNode *Node, newNode *Node) {
 
 	newNode.next = targetNode
 	p.next = newNode
-}
-
-func (s *SingleLinkedList) InsertValueBefore(targetNode *Node, value int) *Node {
-	newNode := &Node{data: value}
-	s.InsertNodeBefore(targetNode, newNode)
-	return newNode
+	s.length++
 }
 
 func (s *SingleLinkedList) DeleteByNode(node *Node) {
@@ -104,6 +126,7 @@ func (s *SingleLinkedList) DeleteByNode(node *Node) {
 	// 如果删除的是头节点
 	if s.head == node {
 		s.head = s.head.next
+		s.length--
 		return
 	}
 
@@ -117,6 +140,7 @@ func (s *SingleLinkedList) DeleteByNode(node *Node) {
 	}
 
 	current.next = node.next
+	s.length--
 }
 
 func (s *SingleLinkedList) String() string {
@@ -129,7 +153,7 @@ func (s *SingleLinkedList) String() string {
 	return listStr
 }
 
-func (s *SingleLinkedList) Traverse(handleFunc func(a, b int) error, wants ...int) error {
+func (s *SingleLinkedList) Traverse(handleFunc func(a, b interface{}) error, wants ...interface{}) error {
 	p := s.head
 	for _, want := range wants {
 		if p == nil {

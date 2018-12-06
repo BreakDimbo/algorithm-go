@@ -1,4 +1,4 @@
-package linkedList
+package linkedlist
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ func TestSingleLinkedList(t *testing.T) {
 	list.InsertValueToHead(4)
 	list.DeleteByNode(firstNode)
 
-	err := list.Traverse(func(a, b int) error {
+	err := list.Traverse(func(a, b interface{}) error {
 		if a != b {
 			return fmt.Errorf("a: %d is not equal b: %d", a, b)
 		}
