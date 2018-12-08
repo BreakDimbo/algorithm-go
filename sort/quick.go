@@ -1,6 +1,6 @@
 package sort
 
-func quickSort(a []int) {
+func QuickSort(a []int) {
 	if len(a) <= 1 {
 		return
 	}

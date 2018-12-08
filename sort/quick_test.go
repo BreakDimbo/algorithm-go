@@ -15,7 +15,7 @@ func Test_quickSort(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			quickSort(tt.input)
+			QuickSort(tt.input)
 			if !Equal(tt.input, tt.want) {
 				t.Errorf("sort is not right, want %v, get %v", tt.want, tt.input)
 			}
