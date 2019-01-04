@@ -1,8 +1,9 @@
 package recursive
 
 func pow(x, n int) int {
+	k := 1
 	for i := 0; i < n; i++ {
-		x *= x
+		k *= x
 	}
 	return x
 }
