@@ -9,5 +9,5 @@ func Test_isValidBST(t *testing.T) {
 	tree.Left = &TreeNode{
 		Val: 1,
 	}
-	isValidBST(tree)
+	// isValidBST(tree)
 }
