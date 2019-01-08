@@ -6,5 +6,5 @@ import (
 )
 
 func Test_solvesNQueues(t *testing.T) {
-	fmt.Println(solveNQueens(6))
+	fmt.Println(solveNQueens(7))
 }

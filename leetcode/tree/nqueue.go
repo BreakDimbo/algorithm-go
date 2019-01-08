@@ -49,7 +49,9 @@ type DFS struct {
 func (d *DFS) Dfs(n, row int, result []int) {
 	// 递归终止条件
 	if row >= n {
-		d.res = append(d.res, result)
+		dst := make([]int, len(result))
+		copy(dst, result) // 注意这里要进行一份 copy，否则 result 是指针，递归外部可能修改该值
+		d.res = append(d.res, dst)
 		return
 	}
 
@@ -65,7 +67,7 @@ func (d *DFS) Dfs(n, row int, result []int) {
 		d.na[row-col] = true
 
 		// 开始递归
-		d.Dfs(n, row+1, append(result, col))
+		d.Dfs(n, row+1, append(result, col)) // 注意不要改变 result 的值
 
 		// 归的过程恢复现场
 		d.col[col] = false
