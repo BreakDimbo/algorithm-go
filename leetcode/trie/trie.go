@@ -3,7 +3,7 @@ package trie
 type TrieNode struct {
 	val      rune
 	isWord   bool
-	children map[rune]*TrieNode
+	children []*TrieNode
 }
 
 type Trie struct {
@@ -15,7 +15,7 @@ func Constructor() Trie {
 	return Trie{
 		root: &TrieNode{
 			isWord:   false,
-			children: make(map[rune]*TrieNode),
+			children: make([]*TrieNode, 26),
 		},
 	}
 }
@@ -24,10 +24,10 @@ func Constructor() Trie {
 func (this *Trie) Insert(word string) {
 	node := this.root
 	for _, c := range word {
-		if _, ok := node.children[c]; !ok {
-			node.children[c] = &TrieNode{val: c, children: make(map[rune]*TrieNode)}
+		if node.children[c-'a'] == nil {
+			node.children[c-'a'] = &TrieNode{val: c, children: make([]*TrieNode, 26)}
 		}
-		node = node.children[c]
+		node = node.children[c-'a']
 	}
 	node.isWord = true
 }
@@ -36,10 +36,10 @@ func (this *Trie) Insert(word string) {
 func (this *Trie) Search(word string) bool {
 	node := this.root
 	for _, c := range word {
-		if _, ok := node.children[c]; !ok {
+		if node.children[c-'a'] == nil {
 			return false
 		}
-		node = node.children[c]
+		node = node.children[c-'a']
 	}
 	return node.isWord
 }
@@ -48,10 +48,10 @@ func (this *Trie) Search(word string) bool {
 func (this *Trie) StartsWith(prefix string) bool {
 	node := this.root
 	for _, c := range prefix {
-		if _, ok := node.children[c]; !ok {
+		if node.children[c-'a'] == nil {
 			return false
 		}
-		node = node.children[c]
+		node = node.children[c-'a']
 	}
 	return true
 }
