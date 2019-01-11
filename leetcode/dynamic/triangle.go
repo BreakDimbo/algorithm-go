@@ -13,13 +13,6 @@ func minimumTotal(triangle [][]int) int {
 	return mini[0]
 }
 
-func min(x, y int) int {
-	if x < y {
-		return x
-	}
-	return y
-}
-
 // DP bottom-to-top
 
 func minTotal(triangle [][]int) int {
