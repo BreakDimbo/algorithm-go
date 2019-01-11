@@ -23,9 +23,6 @@ func maxProfit(k int, prices []int) int {
 	}
 
 	mp := make([][][]int, n)
-	if k == 1000000000 {
-		k = n / 2
-	}
 	for i := range mp {
 		mp[i] = make([][]int, k+1)
 		for j := range mp[i] {
