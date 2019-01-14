@@ -19,6 +19,10 @@ func (s *Stack) Pop() interface{} {
 	return v
 }
 
+func (s *Stack) Peek() interface{} {
+	return s.data[len(s.data)-1]
+}
+
 func (s *Stack) Push(v interface{}) {
 	s.data = append(s.data, v)
 }
