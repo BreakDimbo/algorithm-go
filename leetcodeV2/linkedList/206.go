@@ -2,7 +2,7 @@ package linkedList
 
 type ListNode struct {
 	Next *ListNode
-	val  int
+	Val  int
 }
 
 func reverseList(head *ListNode) *ListNode {
