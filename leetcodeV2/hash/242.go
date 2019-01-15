@@ -3,6 +3,7 @@ package hash
 /*
 	solution 1: 使用 map
 	solution 2: 使用数组：rune -> ASCII int(r - '0')
+	solution 3: 排序，比较俩个字符串是否相等
 */
 
 func isAnagram(s string, t string) bool {
@@ -11,15 +12,9 @@ func isAnagram(s string, t string) bool {
 	}
 
 	asciiMap := make([]int, 256)
-	for _, v := range s {
-		asciiMap[int(v-'0')]++
-	}
-
-	for _, v := range t {
-		if asciiMap[int(v-'0')] < 1 {
-			return false
-		}
-		asciiMap[int(v-'0')]--
+	for i := range s {
+		asciiMap[int(s[i]-'0')]++
+		asciiMap[int(t[i]-'0')]--
 	}
 
 	for _, v := range asciiMap {
