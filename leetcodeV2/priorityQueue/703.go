@@ -9,7 +9,7 @@ func (h IntHeap) Less(i, j int) bool  { return h[i] < h[j] }
 func (h IntHeap) Swap(i, j int)       { h[i], h[j] = h[j], h[i] }
 func (h *IntHeap) Push(x interface{}) { *h = append(*h, x.(int)) }
 func (h *IntHeap) Peek() interface{} {
-	// 这里也可以直接使用 return *h[0]
+	// 这里也可以直接使用 return (*h)[0]
 	res := heap.Pop(h)
 	heap.Push(h, res)
 	return res
