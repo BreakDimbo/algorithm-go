@@ -1,7 +1,7 @@
 package linkedList
 
 /*
-	solution 1: 遍历，主要是进位问题
+	solution 1: 遍历，主要是进位问题，使用 carry 变量保存每次的进位
 */
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
@@ -27,6 +27,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		cur = cur.Next
 	}
 
+	// 注意最后一个节点的进位问题
 	if carry > 0 {
 		cur.Next = &ListNode{Val: carry}
 	}
