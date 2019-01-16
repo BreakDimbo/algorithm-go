@@ -14,7 +14,7 @@ func majorityElement(nums []int) int {
 */
 
 func majorityElement(nums []int) int {
-	count, candidate := 0, nums[0]
+	var count, candidate int
 	for _, v := range nums {
 		if count == 0 {
 			candidate = v
