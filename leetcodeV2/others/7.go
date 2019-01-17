@@ -3,7 +3,7 @@ package others
 import "math"
 
 /*
-	solution 1: n % 10
+	solution 1: n % 10 pay attention to the overflow
 */
 
 func reverse(x int) int {
