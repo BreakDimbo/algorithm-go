@@ -2,9 +2,10 @@ package linkedList
 
 /*
 	solution 1: reverse the list and find the nth from the head
-	solution 2:
+	solution 2: fast - slow = n
 */
 
+/*
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	if head.Next == nil {
 		return nil
@@ -33,4 +34,26 @@ func reverse(node *ListNode) *ListNode {
 		prev, cur.Next, cur = cur, prev, cur.Next
 	}
 	return prev
+}
+*/
+
+func removeNthFromEnd(head *ListNode, n int) *ListNode {
+	if head.Next == nil {
+		return nil
+	}
+
+	dummy := &ListNode{Next: head}
+	fast, slow := dummy, dummy
+
+	for fast.Next != nil {
+		fast = fast.Next
+		if n <= 0 {
+			slow = slow.Next
+		}
+		n--
+	}
+
+	slow.Next = slow.Next.Next
+
+	return dummy.Next
 }
