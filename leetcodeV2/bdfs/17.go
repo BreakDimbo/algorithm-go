@@ -1,7 +1,8 @@
 package bdfs
 
 /*
-	solution 1: DFS, 7&9
+	solution 1: DFS recursive
+	solution 2: iteration + fifo queue
 */
 
 func letterCombinations(digits string) []string {
