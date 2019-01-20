@@ -3,6 +3,7 @@ package bdfs
 /*
 	solution 1 DFS
 		剪枝
+	solution 2 使用 map，rows/cols/boxes，一次遍历，每次检查对应 map 中是否有重复元素
 */
 
 func isValidSudoku(board [][]byte) bool {
