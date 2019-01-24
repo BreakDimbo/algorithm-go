@@ -7,7 +7,7 @@ import (
 /*
 	solution 1: brute force
 	solution 2: dp min(leftMax-rightMax) - height
-	solution 3
+	solution 3: two pointers
 */
 
 func trap(height []int) int {
