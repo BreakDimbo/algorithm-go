@@ -3,7 +3,7 @@ package bdfs
 import "sort"
 
 /*
-	solution 1: brute force
+	solution 1: dfs
 */
 
 func subsets(nums []int) [][]int {
