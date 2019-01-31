@@ -1,7 +1,7 @@
 package bdfs
 
 /*
-	solution 1: DP
+	solution 1: Dynamic programming
 */
 
 func numDecodings(s string) int {
