@@ -1,4 +1,4 @@
-package bdfs
+package dynamicp
 
 import "testing"
 

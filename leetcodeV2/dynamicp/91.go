@@ -1,4 +1,4 @@
-package bdfs
+package dynamicp
 
 /*
 	solution 1: Dynamic programming
