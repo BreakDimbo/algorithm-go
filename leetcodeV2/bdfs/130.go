@@ -4,12 +4,7 @@ package bdfs
 	solution 1: dfs
 */
 
-var (
-	dx = []int{0, 0, -1, 1}
-	dy = []int{1, -1, 0, 0}
-)
-
-func solve(board [][]byte) {
+func solveF(board [][]byte) {
 	for i := range board {
 		for j := range board[i] {
 			if i == 0 || i == len(board)-1 || j == 0 || j == len(board[i])-1 {
