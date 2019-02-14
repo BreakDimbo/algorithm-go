@@ -1,4 +1,4 @@
-package bdfs
+package dynamicp
 
 /*
 	solution 1: dfs
@@ -31,7 +31,7 @@ func canBreak(s string, dict map[string]bool) bool {
 }
 */
 
-func wordBreak(s string, wordDict []string) bool {
+func wordBreak1(s string, wordDict []string) bool {
 	// f[i] stands for if s[0:i] can be broken
 	f := make([]bool, len(s))
 	f[0] = true
