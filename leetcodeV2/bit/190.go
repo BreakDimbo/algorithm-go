@@ -2,6 +2,7 @@ package bit
 
 /*
 	solution 1: shift and bit operate
+	solution 2: 8bit merge sort
 */
 
 func reverseBits(num uint32) uint32 {
