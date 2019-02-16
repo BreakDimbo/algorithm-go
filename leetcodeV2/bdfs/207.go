@@ -1,4 +1,4 @@
-package graph
+package bdfs
 
 /*
 	solution 1: use hash dfs
