@@ -8,7 +8,7 @@ type MinStack struct {
 }
 
 /** initialize your data structure here. */
-func Constructor() MinStack {
+func ConstructorX() MinStack {
 	return MinStack{
 		data: make([]int, 0),
 		min:  math.MaxInt32,
