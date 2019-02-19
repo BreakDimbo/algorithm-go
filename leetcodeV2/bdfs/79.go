@@ -5,8 +5,8 @@ package bdfs
 */
 
 var (
-	dx = []int{0, 0, -1, 1}
-	dy = []int{1, -1, 0, 0}
+	dxx = []int{0, 0, -1, 1}
+	dyy = []int{1, -1, 0, 0}
 )
 
 func exist(board [][]byte, word string) bool {
@@ -41,7 +41,7 @@ func wordDfs(board [][]byte, i, j int, word string, visited [][]int) bool {
 
 	visited[i][j] = 1
 	for k := 0; k < 4; k++ {
-		x, y := i+dx[k], j+dy[k]
+		x, y := i+dxx[k], j+dyy[k]
 		if wordDfs(board, x, y, word[1:], visited) {
 			return true
 		}
