@@ -37,7 +37,7 @@ func mergeSort(nums []int, lo, hi int, index, count []int) {
 	mergeSort(nums, lo, mid, index, count)
 	mergeSort(nums, mid+1, hi, index, count)
 
-	mergeX(nums, lo, mid, mid+1, hi, index, count)
+	mergeX(nums, lo, mid, mid+1, hi, index, count)																	
 }
 
 func mergeX(nums []int, l1, h1, l2, h2 int, index, count []int) {
