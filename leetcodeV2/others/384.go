@@ -31,14 +31,10 @@ func (this *Solution) Reset() []int {
 
 /** Returns a random shuffling of the array. */
 func (this *Solution) Shuffle() []int {
-	tmp := make([]int, len(this.data))
-	copy(tmp, this.data)
-
-	for i := 0; i < len(this.data); i++ {
-		index := rand.Intn(len(tmp))
-		this.data[i] = tmp[index]
-		tmp[index], tmp[len(tmp)-1] = tmp[len(tmp)-1], tmp[index]
-		tmp = tmp[:len(tmp)-1]
+	n := len(this.data)
+	for i := n - 1; i >= 0; i-- {
+		index := rand.Intn(i + 1)
+		this.data[index], this.data[i] = this.data[i], this.data[index]
 	}
 	return this.data
 }
