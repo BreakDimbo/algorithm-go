@@ -4,6 +4,7 @@ import "sort"
 
 /*
 	solution 1 backtrace
+		https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
 */
 
 func combinationSum(candidates []int, target int) [][]int {
