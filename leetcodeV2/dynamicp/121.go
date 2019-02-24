@@ -9,7 +9,7 @@ import "math"
 		dp[i][1]
 */
 
-func maxProfit(prices []int) int {
+func maxProfitXX(prices []int) int {
 	minPrice := math.MaxInt32
 	maxProfit := 0
 
