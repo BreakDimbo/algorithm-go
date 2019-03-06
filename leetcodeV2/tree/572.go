@@ -1,7 +1,7 @@
 package tree
 
 func isSubtree(s *TreeNode, t *TreeNode) bool {
-	return s != nil && (equals(s, t) || isSubtree(s.Left, t) || isSubtree(s.Right, t))
+	return s != nil && ((equals(s, t) || isSubtree(s.Left, t) || isSubtree(s.Right, t)))
 }
 
 func equals(x, y *TreeNode) bool {
