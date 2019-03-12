@@ -165,3 +165,43 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	}
 	return dummy.Next
 }
+
+func mergeKLists(lists []*ListNode) *ListNode {
+	if len(lists) == 0 {
+		return nil
+	}
+	return divideAndConq(lists, 0, len(lists)-1)
+}
+
+func divideAndConq(lists []*ListNode, l, r int) *ListNode {
+	if l >= r {
+		return lists[l]
+	}
+	mid := l + ((r - l) >> 1)
+	left := divideAndConq(lists, l, mid)
+	right := divideAndConq(lists, mid+1, r)
+
+	return mergeListx(left, right)
+}
+
+func mergeListx(l, r *ListNode) *ListNode {
+	dummy := &ListNode{}
+	cur := dummy
+	for l != nil && r != nil {
+		if l.Val < r.Val {
+			cur.Next = l
+			l = l.Next
+		} else {
+			cur.Next = r
+			r = r.Next
+		}
+		cur = cur.Next
+	}
+	if l != nil {
+		cur.Next = l
+	}
+	if r != nil {
+		cur.Next = r
+	}
+	return dummy.Next
+}
