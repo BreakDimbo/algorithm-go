@@ -7,6 +7,7 @@ package tree
 		use stack
 */
 
+/*
 func inorderTraversal(root *TreeNode) []int {
 	result := make([]int, 0)
 
@@ -23,4 +24,24 @@ func inorderTraversal(root *TreeNode) []int {
 
 	inorder(root)
 	return result
+}
+*/
+
+func inorderTraversal(root *TreeNode) []int {
+	res := make([]int, 0)
+	stack := make([]*TreeNode, 0)
+	pNode := root
+
+	for pNode != nil || len(stack) != 0 {
+		if pNode != nil {
+			stack = append(stack, pNode)
+			pNode = pNode.Left
+		} else {
+			node := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			res = append(res, node.Val)
+			pNode = node.Right
+		}
+	}
+	return res
 }
