@@ -1,9 +1,6 @@
 package array
 
-import (
-	"sort"
-)
-
+/*
 // solution 1: two hash
 // solution 2: 3 pointer
 func threeSum(nums []int) [][]int {
@@ -73,3 +70,4 @@ func firstMissingPositive(nums []int) int {
 	}
 	return i + 1
 }
+*/
