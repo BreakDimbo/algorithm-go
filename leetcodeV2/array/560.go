@@ -1,26 +1,19 @@
 package array
 
 // sliding window not for negative
+// what we need is [0, i - 1] and SUM[0, j] to get SUM[i, j] == k
 
 func subarraySum(nums []int, k int) int {
-	if len(nums) == 0 {
-		return 0
-	}
-	i, j := 0, 0
-	count, curSum := 0, 0
-	for i < j && i < len(nums) {
-		if curSum < k && j < len(nums) {
-			curSum += nums[j]
-			j++
-		} else if curSum > k {
-			curSum -= nums[i]
-			i++
+	var sum, count int
+	h := make(map[int]int)
+	h[0] = 1
+
+	for i := 0; i < len(nums); i++ {
+		sum += nums[i]
+		if v, ok := h[sum-k]; ok {
+			count += v
 		}
-		if curSum == k && i < len(nums) {
-			count++
-			curSum -= nums[i]
-			i++
-		}
+		h[sum]++
 	}
 	return count
 }
