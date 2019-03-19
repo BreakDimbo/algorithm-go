@@ -1,5 +1,6 @@
 package tree
 
+/*
 import "math"
 
 var pre *TreeNode
@@ -92,4 +93,28 @@ func minDepthDfs(node *TreeNode, depth int, minDepth *int) {
 	}
 	minDepthDfs(node.Left, depth+1, minDepth)
 	minDepthDfs(node.Right, depth+1, minDepth)
+}
+*/
+
+//
+func isValidBST(root *TreeNode) bool {
+	var pre *TreeNode
+	stack := []*TreeNode{}
+	pNode := root
+
+	for pNode != nil || len(stack) != 0 {
+		if pNode != nil {
+			stack = append(stack, pNode)
+			pNode = pNode.Left
+		} else {
+			v := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			if pre != nil && pre.Val >= v.Val {
+				return false
+			}
+			pre = v
+			pNode = v.Right
+		}
+	}
+	return true
 }
