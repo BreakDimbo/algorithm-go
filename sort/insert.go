@@ -1,5 +1,6 @@
 package sort
 
+/*
 func insertSort(a []int) {
 	n := len(a)
 	if n <= 1 {
@@ -21,3 +22,17 @@ func insertSort(a []int) {
 		a[j+1] = value
 	}
 }
+*/
+
+/*
+func insertSort(a []int) {
+	for i := 1; i < len(a); i++ {
+		tmp := a[i]
+		j := i - 1
+		for ; j >= 0 && a[j] > tmp; j-- {
+			a[j+1] = a[j]
+		}
+		a[j+1] = tmp
+	}
+}
+*/

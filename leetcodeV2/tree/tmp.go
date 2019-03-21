@@ -96,7 +96,7 @@ func minDepthDfs(node *TreeNode, depth int, minDepth *int) {
 }
 */
 
-//
+/*
 func isValidBST(root *TreeNode) bool {
 	var pre *TreeNode
 	stack := []*TreeNode{}
@@ -117,4 +117,142 @@ func isValidBST(root *TreeNode) bool {
 		}
 	}
 	return true
+}
+*/
+
+/*
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+	if root == nil {
+		return nil
+	}
+	if root == p || root == q {
+		return root
+	}
+	l := lowestCommonAncestor(root.Left, p, q)
+	r := lowestCommonAncestor(root.Right, p, q)
+	if l != nil && r != nil {
+		return root
+	}
+	if l == nil {
+		return r
+	}
+	return l
+}
+*/
+
+/*
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+	for root != nil {
+		if root.Val > q.Val && root.Val > p.Val {
+			root = root.Left
+		} else if root.Val < p.Val && root.Val < q.Val {
+			root = root.Right
+		} else {
+			return root
+		}
+	}
+	return nil
+}
+*/
+
+/*
+func preorderTraversal(root *TreeNode) []int {
+	r := []int{}
+	stack := []*TreeNode{}
+	pNode := root
+
+	for len(stack) != 0 || pNode != nil {
+		if pNode != nil {
+			r = append(r, pNode.Val)
+			stack = append(stack, pNode)
+			pNode = pNode.Left
+		} else {
+			v := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			pNode = v.Right
+		}
+	}
+	return r
+}
+*/
+
+/*
+func inorderTraversal(root *TreeNode) []int {
+	r := []int{}
+	stack := []*TreeNode{}
+
+	for len(stack) != 0 || root != nil {
+		if root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		} else {
+			v := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			r = append(r, v.Val)
+			root = v.Right
+		}
+	}
+	return r
+}
+*/
+/*
+func postorderTraversal(root *TreeNode) []int {
+	r := []int{}
+	stack := []*TreeNode{}
+	var pre *TreeNode
+
+	for len(stack) != 0 || root != nil {
+		if root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		} else {
+			v := stack[len(stack)-1]
+			if v.Right == nil || v.Right == pre {
+				r = append(r, v.Val)
+				stack = stack[:len(stack)-1]
+				pre = v
+			} else {
+				root = v.Right
+			}
+		}
+	}
+	return r
+}
+*/
+
+func myPow(x float64, n int) float64 {
+	if n < 0 {
+		n = -n
+		x = 1 / x
+	}
+	r := 1.0
+	for n != 0 {
+		if n&1 == 1 {
+			r *= x
+		}
+		x *= x
+		n >>= 1
+	}
+	return r
+}
+
+func majorityElement(nums []int) int {
+	can := 0
+	count := 0
+
+	for _, num := range nums {
+		if count == 0 {
+			can = num
+		}
+		if can == num {
+			count++
+		} else {
+			count--
+		}
+	}
+	return can
+}
+
+func maxProfit(prices []int) int {
+
 }
