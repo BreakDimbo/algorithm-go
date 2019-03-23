@@ -237,3 +237,82 @@ func middleNode(head *ListNode) *ListNode {
 	}
 	return slow
 }
+
+func reverseList(head *ListNode) *ListNode {
+	var pre *ListNode
+	for head != nil {
+		pre, head, head.Next = head, head.Next, pre
+	}
+	return pre
+}
+
+func swapPairs(head *ListNode) *ListNode {
+	dummy := &ListNode{Next: head}
+	pre, cur := dummy, head
+	for cur != nil && cur.Next != nil {
+		pre.Next, cur.Next, cur.Next.Next = cur.Next, cur.Next.Next, cur
+		pre, cur = cur, cur.Next
+	}
+	return dummy.Next
+}
+
+func hasCycle(head *ListNode) bool {
+	fast, slow := head, head
+	for fast != nil && fast.Next != nil {
+		fast = fast.Next.Next
+		slow = slow.Next
+		if fast == slow {
+			return true
+		}
+	}
+	return false
+}
+
+// 2(x1 + x2) = x1 + x2 + x3 + x2 -> x1 = x3
+func detectCycle(head *ListNode) *ListNode {
+	fast, slow := head, head
+	for fast != nil && fast.Next != nil {
+		fast = fast.Next.Next
+		slow = slow.Next
+		if fast == slow {
+			for fast != head {
+				fast = fast.Next
+				head = head.Next
+			}
+			return fast
+		}
+	}
+	return nil
+}
+
+func reverseKGroup(head *ListNode, k int) *ListNode {
+	dummy := &ListNode{Next: head}
+	anchor := dummy
+	var preHead, mover, tail *ListNode
+
+	for {
+		preHead = anchor
+		anchor = preHead.Next
+		tail = preHead
+
+		for i := 0; i < k && tail != nil; i++ {
+			tail = tail.Next
+		}
+
+		if tail == nil {
+			break
+		}
+
+		for i := 0; i < k-1; i++ {
+			mover = preHead.Next
+			preHead.Next = mover.Next
+			mover.Next = tail.Next
+			tail.Next = mover
+		}
+	}
+	return dummy.Next
+}
+
+func mergeKLists(lists []*ListNode) *ListNode {
+
+}
