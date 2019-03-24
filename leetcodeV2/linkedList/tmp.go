@@ -314,5 +314,40 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 }
 
 func mergeKLists(lists []*ListNode) *ListNode {
+	if len(lists) == 0 {
+		return nil
+	}
+	return divideNConq(lists, 0, len(lists)-1)
+}
 
+func divideNConq(lists []*ListNode, lo, hi int) *ListNode {
+	if lo == hi {
+		return lists[lo]
+	}
+	mid := lo + ((hi - lo) >> 1)
+	left := divideNConq(lists, lo, mid)
+	right := divideNConq(lists, mid+1, hi)
+
+	return mergex(left, right)
+}
+
+func mergex(left, right *ListNode) *ListNode {
+	dummy := &ListNode{}
+	list := dummy
+	for left != nil && right != nil {
+		if left.Val < right.Val {
+			list.Next = left
+			left = left.Next
+		} else {
+			list.Next = right
+			right = right.Next
+		}
+		list = list.Next
+	}
+	if left != nil {
+		list.Next = left
+	} else {
+		list.Next = right
+	}
+	return dummy.Next
 }
