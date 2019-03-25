@@ -58,3 +58,29 @@ func threeSum(nums []int) [][]int {
 	}
 	return res
 }
+
+func isValid(s string) bool {
+	m := map[rune]rune{
+		'(': ')',
+		'{': '}',
+		'[': ']',
+	}
+	stack := []rune{}
+
+	for _, r := range s {
+		if _, ok := m[r]; ok {
+			stack = append(stack, r)
+		} else {
+			if len(stack) == 0 {
+				return false
+			} else {
+				top := stack[len(stack)-1]
+				if m[top] != r {
+					return false
+				}
+				stack = stack[:len(stack)-1]
+			}
+		}
+	}
+	return len(stack) == 0
+}
