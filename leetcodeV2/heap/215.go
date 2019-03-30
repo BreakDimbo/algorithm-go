@@ -1,6 +1,8 @@
 package heap
 
-import "container/heap"
+import (
+	"container/heap"
+)
 
 /*
 	solution 1: use min heap

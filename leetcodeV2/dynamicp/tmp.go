@@ -1,7 +1,6 @@
 package dynamicp
 
-import "github.com/breakD/algorithms/leetcodeV2/util"
-
+/*
 func minDistance(word1 string, word2 string) int {
 	m, n := len(word1), len(word2)
 	dp := make([][]int, m+1)
@@ -26,4 +25,19 @@ func minDistance(word1 string, word2 string) int {
 		}
 	}
 	return dp[m+1][n+1]
+}
+*/
+
+func climbStairs(n int) int {
+	if n <= 2 {
+		return n
+	}
+	dp := make([]int, n+1)
+	dp[0] = 0
+	dp[1] = 1
+	dp[2] = 2
+	for i := 3; i <= n; i++ {
+		dp[i] = dp[i-1] + dp[i-2]
+	}
+	return dp[n]
 }

@@ -1,5 +1,6 @@
 package heap
 
+/*
 import "container/heap"
 
 type IHeap []int
@@ -92,3 +93,4 @@ func (this *KthLargest) Add(val int) int {
 	}
 	return this.h.Top()
 }
+*/
