@@ -351,3 +351,41 @@ func mergex(left, right *ListNode) *ListNode {
 	}
 	return dummy.Next
 }
+
+func mergeKLists(lists []*ListNode) *ListNode {
+	if len(lists) == 0 {
+		return nil
+	}
+	return conqNdivide(lists, 0, len(lists)-1)
+}
+
+func conqNdivide(lists []*ListNode, lo, hi int) *ListNode {
+	if lo == hi {
+		return lists[lo]
+	}
+	mid := lo + ((hi - lo) >> 1)
+	left := conqNdivide(lists, lo, mid)
+	right := conqNdivide(lists, mid+1, hi)
+	return merge(left, right)
+}
+
+func merge(l, r *ListNode) *ListNode {
+	dummy := &ListNode{}
+	head := dummy
+	for l != nil && r != nil {
+		if l.Val < r.Val {
+			head.Next = l
+			l = l.Next
+		} else {
+			head.Next = r
+			r = r.Next
+		}
+		head = head.Next
+	}
+	if l == nil {
+		head.Next = r
+	} else {
+		head.Next = l
+	}
+	return dummy.Next
+}
